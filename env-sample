@@ -1,0 +1,8 @@
+MONGO_URL="mongodb://localhost:27017/sportzax-dev"
+USE_MONGO_CLIENT=true
+NCAPI_PORT=3000
+JWT_SECRET="WLA9fXDsTuxE"
+SMTP_USERNAME="test.ncapi@gmail.com"
+SMTP_PASSWORD="Test@1234"
+BASE_URL_DEVELOPMENT="localhost:3000/api/v1"
+CRIC_API_KEY="pUojLk6juHfYVvHvUBUfxVnw4pC2"

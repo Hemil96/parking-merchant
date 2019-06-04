@@ -1,0 +1,59 @@
+{
+  "name": "sportzax",
+  "version": "1.0.0",
+  "description": "Sportzax maintained by hemil96",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hemil96/sportzax.git"
+  },
+  "author": "hemil96",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hemil96/sportzax/issues"
+  },
+  "homepage": "https://github.com/Hemil96/sportzax#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bcrypt": "^2.0.0",
+    "body-parser": "^1.18.3",
+    "bs58": "^4.0.1",
+    "date-and-time": "^0.6.2",
+    "dotenv": "^6.0.0",
+    "enum": "^2.5.0",
+    "express": "^4.16.3",
+    "express-rate-limit": "^3.2.0",
+    "express-validator": "^5.3.1",
+    "helmet": "^3.13.0",
+    "is-iso-date": "0.0.1",
+    "isemail": "^3.1.2",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.21",
+    "mongodb": "^3.1.1",
+    "mongoose": "^5.2.8",
+    "morgan": "^1.9.1",
+    "multer": "^1.3.1",
+    "nodemailer": "^4.6.8",
+    "password-rules": "0.0.3",
+    "path": "^0.12.7",
+    "request": "^2.87.0",
+    "superagent": "^3.8.3",
+    "supertest": "^3.1.0",
+    "winston": "^3.0.0",
+    "winston-papertrail": "^1.0.5"
+  },
+  "devDependencies": {
+    "eslint": "^5.1.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.1.0",
+    "pow-mongodb-fixtures": "^0.14.0",
+    "tape": "^4.9.1"
+  }
+}
