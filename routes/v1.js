@@ -6,10 +6,15 @@ const constants = require('../config/constants');
 const router = express.Router();
 const v = `../modules/${path.basename(__filename, '.js')}`;
 
-// User Routes
+// Merchant Routes
 const merchantRoutes = require(`${v}/merchant/merchantRoute`);
 router.use('/merchants', merchantRoutes.merchantsRouter);
 router.use('/merchant', merchantRoutes.merchantRouter);
+
+// Parking Routes
+const parkingRoutes = require(`${v}/parking/parkingRoute`);
+router.use('/parkings', parkingRoutes.parkingsRouter);
+router.use('/parking', parkingRoutes.parkingRouter);
 
 // Account Routes
 const accountRoutes = require(`${v}/account/accountRoute`);
