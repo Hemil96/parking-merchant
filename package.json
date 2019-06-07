@@ -1,5 +1,5 @@
 {
-  "name": "sportzax",
+  "name": "parking",
   "version": "1.0.0",
   "description": "Sportzax maintained by hemil96",
   "main": "index.js",
@@ -9,19 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hemil96/sportzax.git"
+    "url": "git+"
   },
   "author": "hemil96",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Hemil96/sportzax/issues"
-  },
-  "homepage": "https://github.com/Hemil96/sportzax#readme",
   "dependencies": {
     "axios": "^0.19.0",
     "bcrypt": "^2.0.0",
     "body-parser": "^1.18.3",
     "bs58": "^4.0.1",
+    "cors": "^2.8.5",
     "date-and-time": "^0.6.2",
     "dotenv": "^6.0.0",
     "enum": "^2.5.0",

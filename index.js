@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const http = require('http');
 const multer = require('multer');
 const express = require('express');
+const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
@@ -12,6 +13,8 @@ const logger = require('./helper/logger');
 
 
 const app = express();
+app.use(cors());
+
 
 // Custom filename and path for files
 const storage = multer.diskStorage({
