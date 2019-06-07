@@ -22,17 +22,18 @@ const create = (req, res) => {
   AccountUtils.create(body)
     .then(async (createUtilResponse) => {
       const token = await AccountUtils.encodeToken(createUtilResponse.user._id);
+      return res.set({ 'x-auth-token': token }).status(code.created).json({ message: messages.CREATE_SUCCESS, data: createUtilResponse });
     })
     .catch((err) => {
       logger.error('Error inside accountController "create"...', err);
-      res.status(code.error.internalServerError).json({ error: messages.ERR_INTERNAL_SERVER, data: err });
+      return res.status(code.error.internalServerError).json({ error: messages.ERR_INTERNAL_SERVER, data: err });
     });
 };
 
 const verifyOTP = async (req, res) => {
   try {
     const { email } = req.body;
-    const updatedUser = await User.findOneAndUpdate({ email }, {
+    const updatedUser = await Merchant.findOneAndUpdate({ email }, {
       $set: {
         isActiveAccount: true,
         isEmailVerified: true,
