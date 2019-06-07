@@ -105,11 +105,12 @@ const create = async (data) => {
         this.createdAccount = createdAccount;
         logger.info('Step 3: account created now sending the email');
         const emailId = createdAccount.email;
-        return sendVerificationMail(emailId, this.generatedOTP);
+        resolve({ user: this.createdAccount });
+        // return sendVerificationMail(emailId, this.generatedOTP);
       })
-      .then((sendEmailResponse) => {
-        resolve({ emailStatus: sendEmailResponse, user: this.createdAccount });
-      })
+      // .then((sendEmailResponse) => {
+      //   resolve({ emailStatus: sendEmailResponse, user: this.createdAccount });
+      // })
       .catch((err) => {
         logger.error('Error in create accountUtils', err);
         reject(err);
