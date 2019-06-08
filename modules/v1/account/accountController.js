@@ -22,6 +22,7 @@ const create = (req, res) => {
   AccountUtils.create(body)
     .then(async (createUtilResponse) => {
       const token = await AccountUtils.encodeToken(createUtilResponse.user._id);
+      createUtilResponse.token = token;
       return res.set({ 'x-auth-token': token }).status(code.created).json({ message: messages.CREATE_SUCCESS, data: createUtilResponse });
     })
     .catch((err) => {
