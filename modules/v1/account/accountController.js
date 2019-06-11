@@ -31,6 +31,24 @@ const create = (req, res) => {
     });
 };
 
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const foundUser = await Utils.findResource({ email }, Merchant);
+    if (!foundUser) {
+      return res.status(code.error.unauthorized).json({ error: messages.UNAUTHORIZED });
+    }
+    const passMatch = await Utils.comparePassword(password, foundUser.password);
+    if (!passMatch) {
+      return res.status(code.error.unauthorized).json({ error: messages.UNAUTHORIZED });
+    }
+    const token = await AccountUtils.encodeToken(foundUser._id);
+    return res.status(code.success).json({ message: 'Login Success', token: token });
+  } catch (error) {
+    return res.status(code.error.notFound).json({ error: messages.UNAUTHORIZED, data: error });
+  }
+};
+
 const verifyOTP = async (req, res) => {
   try {
     const { email } = req.body;
@@ -51,6 +69,7 @@ const verifyOTP = async (req, res) => {
 const accountCtr = {
   create,
   verifyOTP,
+  login,
 };
 
 module.exports = accountCtr;

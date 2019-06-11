@@ -4,7 +4,7 @@ const constants = require('../../../config/constants');
 const { code, messages } = constants;
 
 
-const emailLoginValidation = [
+const emailSignUpValidation = [
   [
     // email must be an email
     check('email')
@@ -35,6 +35,26 @@ const emailLoginValidation = [
   ],
 ];
 
+const emailLoginValidation = [
+  [
+    // email must be an email
+    check('email')
+      .isLength({
+        min: 1,
+      })
+      .withMessage(constants.checkIfRequired('email'))
+      .isEmail()
+      .withMessage(constants.checkIfEmail('email')),
+
+    check('password')
+      .isLength({
+        min: 1,
+      })
+      .withMessage(constants.checkIfRequired('password')),
+  ],
+];
+
+
 // Name, Email or Phone, Fb Id
 const facebookLoginValidation = [
   [
@@ -61,7 +81,7 @@ const checkValidationResult = (req, res, next) => {
 };
 
 const accountValidations = {
-  emailLoginValidation, checkValidationResult, facebookLoginValidation,
+  emailLoginValidation, checkValidationResult, facebookLoginValidation, emailSignUpValidation,
 };
 
 module.exports = accountValidations;

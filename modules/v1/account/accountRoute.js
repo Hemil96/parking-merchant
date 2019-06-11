@@ -12,6 +12,11 @@ accountRouter
     [accVal.emailLoginValidation, accVal.checkValidationResult, accountMiddleware.isUniqueEmail],
     accountCtr.create); // Create New Account with Email
 
+accountRouter
+  .post('/login',
+    [accVal.emailLoginValidation, accVal.checkValidationResult],
+    accountCtr.login); // Login with Email\
+
 accountRouter.post('/verify/:token', accountMiddleware.checkOTP, accountCtr.verifyOTP); // Validate Account
 // accountRouter.get('/resendEmail', accountMiddleware.checkEmail, accountCtr.resendEmail); // Request verification mail
 
