@@ -56,7 +56,8 @@ app.use(express.static('public'));
 // Import all modals
 require('./db/merchantModel');
 require('./db/parkingModel');
-
+require('./db/premisesModel');
+require('./db/myParkingModel');
 require('./db/contestModel');
 
 

@@ -80,8 +80,8 @@ const parkingSchema = mongoose.Schema({
   },
   merchantId: {
     type: ObjectIdType,
-    ref: 'merchant'
-  }
+    ref: 'merchant',
+  },
 }, {
   timestamps: { createdAt: 'created', updatedAt: 'modified' },
   versionKey: false,

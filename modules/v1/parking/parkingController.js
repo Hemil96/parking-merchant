@@ -3,11 +3,12 @@ const mongoose = require('mongoose');
 const _ = require('lodash');
 const logger = require('../../../helper/logger');
 const constants = require('../../../config/constants');
-
-const Parking = mongoose.model('parking');
 const ParkingUtils = require('./parkingUtils.js');
 const utils = require('../../../helper/utils');
 
+const Parking = mongoose.model('parking');
+const Premises = mongoose.model('premises');
+const Myparking = mongoose.model('myParking');
 
 const { messages, code } = constants;
 
@@ -42,6 +43,42 @@ const createParking = async (req, res) => {
     return res.status(code.created).json({ message: messages.CREATE_SUCCESS, data: createdParking });
   } catch (error) {
     logger.error('Error inside createParking ...', error);
+    return res.status(code.error.internalServerError).json({ error: messages.ERR_INTERNAL_SERVER, data: error });
+  }
+};
+
+const createPremisesInformation = async (req, res) => {
+  try {
+    logger.info('Inside in createPremisesInformation ...');
+    const objectToCreate = {
+      premisesName: req.body.premisesName,
+      location: req.body.location,
+      maxVehicleCapacity: req.body.maxVehicleCapacity,
+      merchantId: req._user._id,
+    };
+    const createdPremises = await utils.createResource(objectToCreate, Premises);
+    return res.status(code.created).json({ message: messages.CREATE_SUCCESS, data: createdPremises });
+  } catch (error) {
+    logger.error('Error inside createPremisesInformation ...', error);
+    return res.status(code.error.internalServerError).json({ error: messages.ERR_INTERNAL_SERVER, data: error });
+  }
+};
+
+const createMyparking = async (req, res) => {
+  try {
+    logger.info('Inside in createMyparking ...');
+    const objectToCreate = {
+      availableTwoWheelerSlots: req.body.availableTwoWheelerSlots,
+      availableFourWheelerSlots: req.body.availableFourWheelerSlots,
+      contactPhoneNumber: req.body.contactPhoneNumber,
+      timeEnd: req.body.timeEnd,
+      timeStart: req.body.timeStart,
+      parkingCharges: req.body.parkingCharges,
+    };
+    const createdMyparking = await utils.createResource(objectToCreate, Myparking);
+    return res.status(code.created).json({ message: messages.CREATE_SUCCESS, data: createdMyparking });
+  } catch (error) {
+    logger.error('Error inside createMyparking ...', error);
     return res.status(code.error.internalServerError).json({ error: messages.ERR_INTERNAL_SERVER, data: error });
   }
 };
@@ -96,6 +133,9 @@ const parkingCtr = {
   getparkingById,
   updateParking,
   deleteParking,
+
+  createPremisesInformation,
+  createMyparking,
 };
 
 module.exports = parkingCtr;

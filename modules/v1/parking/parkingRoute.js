@@ -10,7 +10,8 @@ const parkingsRouter = express.Router();
 
 // /parkings
 parkingsRouter.get('/', middleware.checkToken, parkingCtr.getAllParkings); // Retrive All Parkings
-parkingsRouter.post('/', middleware.checkToken, parkingCtr.createParking); // Create New Parking
+parkingsRouter.post('/permisesInfo', middleware.checkToken, parkingCtr.createPremisesInformation); // Create New Parking
+parkingsRouter.post('/myParking', middleware.checkToken, parkingCtr.createMyparking); // Create New Parking
 
 // /parking
 parkingRouter.get('/:id', [parkingMiddleware.checkParkingId, middleware.checkToken], parkingCtr.getparkingById); // Retrive parking by ID

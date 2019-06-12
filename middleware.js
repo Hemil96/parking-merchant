@@ -27,6 +27,7 @@ const checkToken = async (req, res, next) => {
     if (!user) {
       return res.status(code.error.unauthorized).json({ error: messages.UNAUTHORIZED });
     }
+    req._user = user;
     next();
   } catch (error) {
     logger.error('Error in  checkToken', error);
