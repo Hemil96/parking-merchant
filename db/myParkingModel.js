@@ -16,7 +16,7 @@ const myParkingSchema = mongoose.Schema({
     type: Number,
     require: true,
   },
-  myParkingCharges: {
+  parkingCharges: {
     type: Number,
     require: true,
   },
