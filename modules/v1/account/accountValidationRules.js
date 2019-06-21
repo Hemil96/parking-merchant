@@ -71,6 +71,22 @@ const facebookLoginValidation = [
   ],
 ];
 
+// Name, Email or Phone, Fb Id
+const forgotPass = [
+  [
+    // email must be an email
+    check('phone')
+      .isLength({
+        min: 1,
+      })
+      .withMessage(constants.checkIfRequired('phone')),
+
+    check('newPassword')
+      .isLength({ min: 1 })
+      .withMessage(constants.checkIfRequired('newPassword')),
+  ],
+];
+
 const checkValidationResult = (req, res, next) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
@@ -81,7 +97,7 @@ const checkValidationResult = (req, res, next) => {
 };
 
 const accountValidations = {
-  emailLoginValidation, checkValidationResult, facebookLoginValidation, emailSignUpValidation,
+  emailLoginValidation, forgotPass, checkValidationResult, facebookLoginValidation, emailSignUpValidation,
 };
 
 module.exports = accountValidations;

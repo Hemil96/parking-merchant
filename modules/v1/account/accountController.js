@@ -65,11 +65,29 @@ const verifyOTP = async (req, res) => {
   }
 };
 
+const forgotPassword = async (req, res) => {
+  try {
+    logger.info('Inside forgotPassword ...');
+    const { phone, newPassword } = req.body;
+    const foundUser = await Utils.findResource({ phone }, Merchant);
+    if (!foundUser) {
+      return res.status(400).json({ message: 'user not found' });
+    }
+    const hash = await Utils.passToHash(newPassword);
+    const updatedUser = await Utils.updateResource({ phone }, { $set: { password: hash } }, Merchant);
+    return res.send(updatedUser);
+  } catch (error) {
+    logger.error('Error inside createFacebookUser ...', error);
+    return res.status(code.error.internalServerError).json({ error: messages.ERR_INTERNAL_SERVER, data: error });
+  }
+};
+
 
 const accountCtr = {
   create,
   verifyOTP,
   login,
+  forgotPassword,
 };
 
 module.exports = accountCtr;

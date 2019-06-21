@@ -11,10 +11,8 @@ const helmet = require('helmet');
 const dbSetting = require('./config/database');
 const logger = require('./helper/logger');
 
-
 const app = express();
 app.use(cors());
-
 
 // Custom filename and path for files
 const storage = multer.diskStorage({
@@ -32,7 +30,6 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
 });
-
 
 // To secure the headers
 app.use(helmet());
@@ -59,7 +56,6 @@ require('./db/parkingModel');
 require('./db/premisesModel');
 require('./db/myParkingModel');
 require('./db/contestModel');
-
 
 // Mongoose database connection
 const connectDb = () => {
@@ -114,7 +110,6 @@ const destroyServer = (server) => {
     process.exit(0);
   });
 };
-
 
 const serverHandlers = {
   startServer,

@@ -17,6 +17,8 @@ accountRouter
     [accVal.emailLoginValidation, accVal.checkValidationResult],
     accountCtr.login); // Login with Email\
 
+accountRouter.post('/forgotPassword', [accVal.forgotPass, accVal.checkValidationResult], accountCtr.forgotPassword);
+
 accountRouter.post('/verify/:token', accountMiddleware.checkOTP, accountCtr.verifyOTP); // Validate Account
 // accountRouter.get('/resendEmail', accountMiddleware.checkEmail, accountCtr.resendEmail); // Request verification mail
 
