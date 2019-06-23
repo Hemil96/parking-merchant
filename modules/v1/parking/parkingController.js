@@ -168,6 +168,7 @@ const createMyparking = async (req, res) => {
       timeEnd: req.body.timeEnd,
       timeStart: req.body.timeStart,
       parkingCharges: req.body.parkingCharges,
+      name: req.body.name,
       merchantId: req._user._id,
     };
     const createdMyparking = await utils.createResource(objectToCreate, Myparking);

@@ -12,6 +12,9 @@ const myParkingSchema = mongoose.Schema({
     type: Date,
     require: true,
   },
+  name: {
+    type: String,
+  },
   contactPhoneNumber: {
     type: Number,
     require: true,
