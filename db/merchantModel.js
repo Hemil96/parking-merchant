@@ -20,6 +20,8 @@ const merchantSchema = mongoose.Schema({
   companyName: String,
   isActiveAccount: { type: Boolean, default: false },
   isEmailVerified: { type: Boolean, default: false },
+  premises: { type: Boolean, default: false },
+  myParking: { type: Boolean, default: false },
   state: String,
   bankDetails: {
     type: mongoose.Schema.Types.ObjectId,

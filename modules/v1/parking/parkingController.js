@@ -9,6 +9,8 @@ const utils = require('../../../helper/utils');
 const Parking = mongoose.model('parking');
 const Premises = mongoose.model('premises');
 const Myparking = mongoose.model('myParking');
+const Merchant = mongoose.model('merchant');
+
 
 const { messages, code } = constants;
 
@@ -109,6 +111,7 @@ const createPremisesInformation = async (req, res) => {
       merchantId: req._user._id,
     };
     const createdPremises = await utils.createResource(objectToCreate, Premises);
+    const updatedMerchat = await utils.updateResource({ _id: req._user._id }, { premises: true }, Merchant);
     return res.status(code.created).json({ message: messages.CREATE_SUCCESS, data: createdPremises });
   } catch (error) {
     logger.error('Error inside createPremisesInformation ...', error);
@@ -165,8 +168,11 @@ const createMyparking = async (req, res) => {
       timeEnd: req.body.timeEnd,
       timeStart: req.body.timeStart,
       parkingCharges: req.body.parkingCharges,
+      merchantId: req._user._id,
     };
     const createdMyparking = await utils.createResource(objectToCreate, Myparking);
+    const updatedMerchat = await utils.updateResource({ _id: req._user._id }, { myParking: true }, Merchant);
+
     return res.status(code.created).json({ message: messages.CREATE_SUCCESS, data: createdMyparking });
   } catch (error) {
     logger.error('Error inside createMyparking ...', error);
