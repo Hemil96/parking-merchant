@@ -43,7 +43,7 @@ const login = async (req, res) => {
       return res.status(code.error.unauthorized).json({ error: messages.UNAUTHORIZED });
     }
     const token = await AccountUtils.encodeToken(foundUser._id);
-    return res.status(code.success).json({ message: 'Login Success', token: token });
+    return res.status(code.success).json({ message: 'Login Success', token: token, user: foundUser });
   } catch (error) {
     return res.status(code.error.notFound).json({ error: messages.UNAUTHORIZED, data: error });
   }

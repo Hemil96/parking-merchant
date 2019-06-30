@@ -12,9 +12,6 @@ const Merchant = mongoose.model('merchant');
 
 const { messages, code } = constants;
 
-// StatusCode
-const errUnthorized = code.error.unauthorized;
-
 const checkToken = async (req, res, next) => {
   try {
     if (!req.headers || !req.headers['x-auth-token']) {
