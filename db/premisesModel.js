@@ -11,6 +11,7 @@ const premisesSchema = mongoose.Schema({
   location: {
     lat: Number,
     long: Number,
+    name: String,
   },
   images: {
     type: [String],

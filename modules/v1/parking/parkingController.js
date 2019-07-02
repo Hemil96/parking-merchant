@@ -162,8 +162,8 @@ const createMyparking = async (req, res) => {
   try {
     logger.info('Inside in createMyparking ...');
     const objectToCreate = {
-      availableTwoWheelerSlots: req.body.availableTwoWheelerSlots,
-      availableFourWheelerSlots: req.body.availableFourWheelerSlots,
+      totalTwoWheelerSlots: req.body.totalTwoWheelerSlots,
+      totalFourWheelerSlots: req.body.totalFourWheelerSlots,
       contactPhoneNumber: req.body.contactPhoneNumber,
       timeEnd: req.body.timeEnd,
       timeStart: req.body.timeStart,

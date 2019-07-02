@@ -15,7 +15,7 @@ const myParkingSchema = mongoose.Schema({
   name: {
     type: String,
   },
-  contactPhoneNumber: {
+  contactPhone: {
     type: Number,
     require: true,
   },
@@ -23,11 +23,11 @@ const myParkingSchema = mongoose.Schema({
     type: Number,
     require: true,
   },
-  availableTwoWheelerSlots: {
+  totalTwoWheelerSlots: {
     type: Number,
     default: 0,
   },
-  availableFourWheelerSlots: {
+  totalFourWheelerSlots: {
     type: Number,
     default: 0,
   },
