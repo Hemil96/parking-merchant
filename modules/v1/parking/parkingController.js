@@ -111,7 +111,7 @@ const createPremisesInformation = async (req, res) => {
       merchantId: req._user._id,
     };
     const createdPremises = await utils.createResource(objectToCreate, Premises);
-    const updatedMerchat = await utils.updateResource({ _id: req._user._id }, { premises: true }, Merchant);
+    const updatedMerchat = await utils.updateResource({ _id: req._user._id }, { premises: true, premisesId: createdPremises._id }, Merchant);
     return res.status(code.created).json({ message: messages.CREATE_SUCCESS, data: createdPremises });
   } catch (error) {
     logger.error('Error inside createPremisesInformation ...', error);
@@ -172,7 +172,7 @@ const createMyparking = async (req, res) => {
       merchantId: req._user._id,
     };
     const createdMyparking = await utils.createResource(objectToCreate, Myparking);
-    const updatedMerchat = await utils.updateResource({ _id: req._user._id }, { myParking: true }, Merchant);
+    const updatedMerchat = await utils.updateResource({ _id: req._user._id }, { myParking: true, myParkingId: createMyparking._id }, Merchant);
 
     return res.status(code.created).json({ message: messages.CREATE_SUCCESS, data: createdMyparking });
   } catch (error) {
