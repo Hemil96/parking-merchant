@@ -172,7 +172,7 @@ const createMyparking = async (req, res) => {
       merchantId: req._user._id,
     };
     const createdMyparking = await utils.createResource(objectToCreate, Myparking);
-    const updatedMerchat = await utils.updateResource({ _id: req._user._id }, { myParking: true, myParkingId: createMyparking._id }, Merchant);
+    const updatedMerchat = await utils.updateResource({ _id: req._user._id }, { myParking: true, myParkingId: createdMyparking._id }, Merchant);
 
     return res.status(code.created).json({ message: messages.CREATE_SUCCESS, data: createdMyparking });
   } catch (error) {
