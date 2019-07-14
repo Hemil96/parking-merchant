@@ -15,7 +15,7 @@ const myParkingSchema = mongoose.Schema({
   name: {
     type: String,
   },
-  contactPhone: {
+  contactPhoneNumber: {
     type: Number,
     require: true,
   },
